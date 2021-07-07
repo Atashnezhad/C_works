@@ -7,8 +7,8 @@ using namespace std;
 int main() {
 
     int r;
-    cin >>r;
-    cout<<r<<endl;
+    //cin >>r;
+    //cout<<r<<endl;
 
     const int x1 =55;
     cout<<x1<<endl;
