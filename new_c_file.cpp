@@ -9,6 +9,10 @@ int main() {
     int r;
     //cin >>r;
     //cout<<r<<endl;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2814b27ede5d308c75262a4272507806a5f87a9d
     const int x1 =55;
     cout<<x1<<endl; 
     int x,y,z;
