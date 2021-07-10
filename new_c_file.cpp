@@ -7,11 +7,10 @@ using namespace std;
 int main() {
 
     int r;
-    cin >>r;
-    cout<<r<<endl;
-
+    //cin >>r;
+    //cout<<r<<endl;
     const int x1 =55;
-    cout<<x1<<endl;
+    cout<<x1<<endl; 
     int x,y,z;
     x = 4;y=5;
     z=x+y;
@@ -20,8 +19,6 @@ int main() {
     cout << "amin said helloooooo" << endl;
     string amin_var = "amin_var";
     cout << amin_var;
-
-    
     return 0;
 }
 
