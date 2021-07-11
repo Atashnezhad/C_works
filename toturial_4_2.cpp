@@ -1,17 +1,13 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
 int main(){
 
-    int num1, num2;
-    cout <<"enter num 1" <<endl;
-    cin >> num1;
-    cout <<"enter num 2" <<endl;
-    cin >>num1;
-    int sum = num1 + num2;
-    cout<<"out sum is"<<endl;
-    cout<<sum<<endl;
-
+    int num1, num2, sum;
+    cout << "enter num 1 and 2" <<endl;
+    cin >> num1>>num2;
+    sum = num1 + num2;
+    cout << "out sum is \n"<<sum<< endl;
+    return 0;
 
 }
