@@ -34,7 +34,7 @@ int main(){
     print_string(1, "amin");
     print_double_number(323424);
     print_string(4, "------");
-
+     
    
 
     // declaring argument of time()
@@ -44,4 +44,8 @@ int main(){
     printf("%s", ctime(&start_time));
     printf("%s", ctime(&end_time));
     // printf(end_time-start_time);
+
+
+
+
 };
