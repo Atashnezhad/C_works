@@ -15,7 +15,6 @@ void print_line_space_with_lenght(int j = 10){
 }
 
 
-
 int main()
 {
 
