@@ -114,15 +114,17 @@ int main()
             "the main function was developed in the python language.\n");
             // "=======================================================\n"); cout<<endl;
     print_line_space_with_lenght(75);
-    Full_bit bit1("first_bit", 25, 25000,20, 8.5, 150, 18000, 25, 20, 0.51, 7);
-    Full_bit bit2("second bit", 15, 30000,15, 12.25, 1000, 34000, 20, 18, 0.71, 4);
-
+    Full_bit bit1("SWG_4B_100", 25, 25000,20, 8.5, 150, 18000, 25, 20, 0.51, 7);
+    Full_bit bit2("SWG_4B_150", 15, 30000,15, 12.25, 1000, 34000, 20, 18, 0.71, 4);
+    Full_bit bit3("SWG_4B_200", 25, 25000,20, 8.5, 150, 18000, 25, 20, 0.51, 7);
+    Full_bit bit4("BSS_4B_100", 15, 30000,15, 12.25, 1000, 34000, 20, 18, 0.71, 4);
 
     bit1.print_details();
-    print_line_space_with_lenght(75);
+    print_line_space_with_lenght(25);
     bit2.print_details();
-
-    print_line_space_with_lenght(75);
-
+    print_line_space_with_lenght(25);
+    bit3.print_details();
+    print_line_space_with_lenght(25);
+    bit4.print_details();
 
 }
