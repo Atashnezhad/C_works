@@ -12,6 +12,7 @@ using namespace std;
 void print_line_space_with_lenght(int j = 10){
     cout<<endl;
     for (int i=0;i<j;i++){ printf("=");}
+    cout<<endl;
 }
 
 
@@ -68,20 +69,26 @@ public:
         Dc = inst_Dc;
         NOB = inst_NOB;
 
-        printf("\nThe object created with name %s", name.c_str());cout<<endl;
+        // printf("\nThe object created with name %s", name.c_str());cout<<endl;
 
 
-        print_line_space_with_lenght(75);
+        // print_line_space_with_lenght(75);
 
     }
 
-    void (){
+    void print_details(){
 
-        
-
-
-
-
+        printf("object name = %s", name.c_str()); cout<<endl;
+        printf("ROP_constant = %.2f", ROP_constant); cout<<endl;
+        printf("Data_WOB = %.2f", Data_WOB); cout<<endl;
+        printf("Data_ROP =  %.2f", Data_ROP); cout<<endl;
+        printf("Db =  %.2f", Db); cout<<endl;
+        printf("RPM =  %.2f", RPM); cout<<endl;
+        printf("UCS =  %.2f", UCS); cout<<endl;
+        printf("NOC =  %i", NOC); cout<<endl;
+        printf("BR =  %i", BR); cout<<endl;
+        printf("UCS =  %.2f", UCS); cout<<endl;
+        printf("NOB =  %i", NOB); cout<<endl;
     }
 
 
@@ -106,9 +113,14 @@ int main()
     printf("This is OOP for interfacial friction angle calculations\n"
             "the main function was developed in the python language.\n");
             // "=======================================================\n"); cout<<endl;
+    print_line_space_with_lenght(75);
+    Full_bit bit1("first_bit", 25, 25000,20, 8.5, 150, 18000, 25, 20, 0.51, 7);
+    Full_bit bit2("second bit", 15, 30000,15, 12.25, 1000, 34000, 20, 18, 0.71, 4);
 
-    Full_bit bit1("first_bit", 25, 25000,20, 8.5, 
-                    150, 18000, 25, 20, 0.51, 7);
+
+    bit1.print_details();
+    print_line_space_with_lenght(75);
+    bit2.print_details();
 
     print_line_space_with_lenght(75);
 
