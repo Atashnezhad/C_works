@@ -1,7 +1,10 @@
 #include <iostream>
+#include<vector>
 // #include <tuple>
 #include<string>
 using namespace std;
+
+#include <bits/stdc++.h>
 
 // to compile this file simply copy and paste following in the cmd
 // clear; g++ IFA.cpp -o IFA; ./IFA
@@ -25,10 +28,10 @@ public:
 
     string name;
     float ROP_constant;
-    float Data_WOB;
-    float Data_ROP;
-    // self.Data_WOB.sort()
-    // self.Data_ROP.sort()
+    vector <float> Data_WOB;
+    // sort(Data_WOB.begin(), Data_WOB.end());
+    vector <float> Data_ROP;
+    // sort(Data_ROP.begin(), Data_ROP.end());
     float Db;
     float RPM;
     float UCS;
@@ -51,16 +54,19 @@ public:
     // float VN = V_Cutter_Equivalent/2.1 // normalize the equivalent velocity
 
     //constructor
-    Full_bit(string inst_name, float inst_ROP_constant, float inst_Data_WOB, 
-    float inst_Data_ROP, float inst_Db, float inst_RPM, float inst_UCS, int inst_NOC, 
-    int inst_BR,float  inst_Dc, int inst_NOB){
+    Full_bit(string inst_name, float inst_ROP_constant, vector <float> inst_Data_WOB, 
+            float inst_Data_ROP, float inst_Db, float inst_RPM, float inst_UCS, 
+            int inst_NOC, int inst_BR, float  inst_Dc, int inst_NOB){
 
         name = inst_name;
         ROP_constant = inst_ROP_constant;
-        Data_WOB = inst_Data_WOB;
-        Data_ROP = inst_Data_ROP;
-        // Data_WOB.sort()
-        // Data_ROP.sort()
+
+        Data_WOB = inst_Data_WOB; 
+        // sort(Data_WOB.begin(), Data_WOB.end());
+
+        Data_ROP = inst_Data_ROP; 
+        // sort(Data_ROP.begin(), Data_ROP.end());
+
         Db = inst_Db;
         RPM = inst_RPM;
         UCS = inst_UCS;
@@ -80,8 +86,8 @@ public:
 
         printf("object name = %s", name.c_str()); cout<<endl;
         printf("ROP_constant = %.2f", ROP_constant); cout<<endl;
-        printf("Data_WOB = %.2f", Data_WOB); cout<<endl;
-        printf("Data_ROP =  %.2f", Data_ROP); cout<<endl;
+        // printf("Data_WOB = %.2f", Data_WOB); cout<<endl;
+        // printf("Data_ROP =  %.2f", Data_ROP); cout<<endl;
         printf("Db =  %.2f", Db); cout<<endl;
         printf("RPM =  %.2f", RPM); cout<<endl;
         printf("UCS =  %.2f", UCS); cout<<endl;
@@ -114,17 +120,35 @@ int main()
             "the main function was developed in the python language.\n");
             // "=======================================================\n"); cout<<endl;
     print_line_space_with_lenght(75);
-    Full_bit bit1("SWG_4B_100", 25, 25000,20, 8.5, 150, 18000, 25, 20, 0.51, 7);
-    Full_bit bit2("SWG_4B_150", 15, 30000,15, 12.25, 1000, 34000, 20, 18, 0.71, 4);
-    Full_bit bit3("SWG_4B_200", 25, 25000,20, 8.5, 150, 18000, 25, 20, 0.51, 7);
-    Full_bit bit4("BSS_4B_100", 15, 30000,15, 12.25, 1000, 34000, 20, 18, 0.71, 4);
+
+
+
+    vector<float> WOB_data = {10000,8000, 25000, 15000, 35000};
+    vector<float> ROP_data = {10000,8000, 25000, 15000, 35000};
+
+
+    Full_bit bit1("SWG_4B_100", 1, WOB_data, ROP_data, 8.5, 100, 25000, 28, 20, 0.5, 7);
+
+
+    // Full_bit bit1("SWG_4B_100", 25, 25000,20, 8.5, 150, 18000, 25, 20, 0.51, 7);
+
+
+
+
+
+
+    // Full_bit bit2("SWG_4B_150", 15, 30000,15, 12.25, 1000, 34000, 20, 18, 0.71, 4);
+    // Full_bit bit3("SWG_4B_200", 25, 25000,20, 8.5, 150, 18000, 25, 20, 0.51, 7);
+    // Full_bit bit4("BSS_4B_100", 15, 30000,15, 12.25, 1000, 34000, 20, 18, 0.71, 4);
 
     bit1.print_details();
     print_line_space_with_lenght(25);
-    bit2.print_details();
-    print_line_space_with_lenght(25);
-    bit3.print_details();
-    print_line_space_with_lenght(25);
-    bit4.print_details();
+
+
+    // bit2.print_details();
+    // print_line_space_with_lenght(25);
+    // bit3.print_details();
+    // print_line_space_with_lenght(25);
+    // bit4.print_details();
 
 }
