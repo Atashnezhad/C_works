@@ -2,13 +2,12 @@
 #include<vector>
 // #include <tuple>
 #include<string>
+#include<bits/stdc++.h>
 using namespace std;
 
-#include <bits/stdc++.h>
 
 // to compile this file simply copy and paste following in the cmd
 // clear; g++ IFA.cpp -o IFA; ./IFA
-
 // run the followinig in cmd to update git repo
 // git add .; git commit -m "someworks"; git psuh; git status
 
@@ -17,6 +16,15 @@ void print_line_space_with_lenght(int j = 10){
     for (int i=0;i<j;i++){ printf("=");}
     cout<<endl;
 }
+
+
+void print_my_vector(vector<float> vec){
+
+        for (auto val : vec){
+            cout<<val<<" ";}
+        cout<<endl;
+}
+
 
 
 
@@ -55,17 +63,17 @@ public:
 
     //constructor
     Full_bit(string inst_name, float inst_ROP_constant, vector <float> inst_Data_WOB, 
-            float inst_Data_ROP, float inst_Db, float inst_RPM, float inst_UCS, 
+            vector <float>  inst_Data_ROP, float inst_Db, float inst_RPM, float inst_UCS, 
             int inst_NOC, int inst_BR, float  inst_Dc, int inst_NOB){
 
         name = inst_name;
         ROP_constant = inst_ROP_constant;
 
         Data_WOB = inst_Data_WOB; 
-        // sort(Data_WOB.begin(), Data_WOB.end());
+        sort(Data_WOB.begin(), Data_WOB.end());
 
         Data_ROP = inst_Data_ROP; 
-        // sort(Data_ROP.begin(), Data_ROP.end());
+        sort(Data_ROP.begin(), Data_ROP.end());
 
         Db = inst_Db;
         RPM = inst_RPM;
@@ -75,10 +83,10 @@ public:
         Dc = inst_Dc;
         NOB = inst_NOB;
 
-        // printf("\nThe object created with name %s", name.c_str());cout<<endl;
+        printf("\nThe object created with name %s", name.c_str()); cout<<endl;
 
-
-        // print_line_space_with_lenght(75);
+        print_line_space_with_lenght(40);
+        print_line_space_with_lenght(40);
 
     }
 
@@ -86,8 +94,13 @@ public:
 
         printf("object name = %s", name.c_str()); cout<<endl;
         printf("ROP_constant = %.2f", ROP_constant); cout<<endl;
-        // printf("Data_WOB = %.2f", Data_WOB); cout<<endl;
-        // printf("Data_ROP =  %.2f", Data_ROP); cout<<endl;
+        // print the wob data vector
+        // printf("Data_WOB = %.2f", Data_WOB[0]); cout<<endl;
+        cout<<"WOB data values"<<endl;
+        print_my_vector(Data_WOB);
+        cout<<"ROP data values"<<endl;
+        print_my_vector(Data_ROP);
+        // printf("Data_ROP =  %.2f", Data_ROP[0]); cout<<endl;
         printf("Db =  %.2f", Db); cout<<endl;
         printf("RPM =  %.2f", RPM); cout<<endl;
         printf("UCS =  %.2f", UCS); cout<<endl;
@@ -98,18 +111,7 @@ public:
     }
 
 
-
-
-
 };
-
-
-
-
-
-
-
-
 
 
 int main()
@@ -126,16 +128,21 @@ int main()
     vector<float> WOB_data = {10000,8000, 25000, 15000, 35000};
     vector<float> ROP_data = {10000,8000, 25000, 15000, 35000};
 
+    Full_bit bit1("SWG_4B_100", 1, 
+                    WOB_data, 
+                    ROP_data, 
+                    8.5, 100, 25000, 
+                    28, 20, 0.5, 7);
 
-    Full_bit bit1("SWG_4B_100", 1, WOB_data, ROP_data, 8.5, 100, 25000, 28, 20, 0.5, 7);
 
+
+    Full_bit bit2("SWG_4B_150", 1, 
+                    WOB_data, 
+                    ROP_data, 
+                    8.5, 150, 25000, 
+                    28, 20, 0.5, 7);
 
     // Full_bit bit1("SWG_4B_100", 25, 25000,20, 8.5, 150, 18000, 25, 20, 0.51, 7);
-
-
-
-
-
 
     // Full_bit bit2("SWG_4B_150", 15, 30000,15, 12.25, 1000, 34000, 20, 18, 0.71, 4);
     // Full_bit bit3("SWG_4B_200", 25, 25000,20, 8.5, 150, 18000, 25, 20, 0.51, 7);
@@ -144,6 +151,8 @@ int main()
     bit1.print_details();
     print_line_space_with_lenght(25);
 
+    bit2.print_details();
+    print_line_space_with_lenght(25);
 
     // bit2.print_details();
     // print_line_space_with_lenght(25);
