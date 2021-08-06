@@ -74,7 +74,7 @@ public:
         NOB = inst_NOB;
 
         printf("The object created with name %s", name.c_str()); cout<<endl;
-        print_line_space_with_lenght(40);
+        // print_line_space_with_lenght(40);
 
         // more attributes are calculated at the following
 
@@ -121,7 +121,7 @@ public:
 
     void print_inserted_attributes_details(){
 
-        cout<<"here are inserted attributes for"<<endl;
+        cout<<"Here is the inserted attributes for"<<endl;
         printf("object name = %s", name.c_str()); cout<<endl;
 
         printf("ROP_constant = %.2f", ROP_constant); cout<<endl;
