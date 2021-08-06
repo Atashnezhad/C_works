@@ -20,8 +20,6 @@ void print_line_space_with_lenght(int j = 10){
     for (int i=0;i<j;i++){ printf("=");}
     cout<<endl;
 }
-
-
 void print_my_vector(vector<float> vec){
 
         for (auto val : vec){
