@@ -10,13 +10,6 @@ using namespace std;
 #define PI 3.14159265
 
 
-
-
-
-
-
-
-
 // to compile this file simply copy and paste following in the cmd
 // clear; g++ IFA.cpp -o IFA; ./IFA
 // run the followinig in cmd to update git repo
@@ -88,8 +81,6 @@ public:
         printf("The object created with name %s", name.c_str()); cout<<endl;
         print_line_space_with_lenght(40);
 
-
-
         // more attributes are calculated at the following
 
         Ac = PI*pow(Dc, 2) / 4; // cutter face area sq-inch
@@ -131,18 +122,6 @@ public:
         VN = V_Cutter_Equivalent/2.1;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     void print_inserted_attributes_details(){
@@ -164,8 +143,6 @@ public:
         printf("UCS =  %.2f", UCS); cout<<endl;
         printf("NOB =  %i", NOB); cout<<endl;
     }
-
-
 
     void print_calculated_attributes_details(){
 
@@ -194,9 +171,6 @@ public:
 
     }
 
-
-
-
 };
 
 
@@ -206,42 +180,42 @@ int main()
 
     printf("This is OOP for interfacial friction angle calculations\n"
             "the main function was developed in the python language.\n");
-            // "=======================================================\n"); cout<<endl;
     print_line_space_with_lenght(75);
 
 
 
-    vector<float> WOB_data = {2300,2420,2660,2910,3180,3410,3660,3940,4170};
-    vector<float> ROP_data = {9.9,11,14.7,18.1,22.6,27.2,31.1,36.5,39.4};
-
-    Full_bit bit1("SWG_4B_100", 1, 
-                    WOB_data, 
-                    ROP_data, 
-                    8.5, 100, 25000, 
-                    28, 20, 0.5, 7);
+    vector<float> WOB_data;
+    vector<float> ROP_data;
 
 
+    WOB_data = {2300,2420,2660,2910,3180,3410,3660,3940,4170};
+    ROP_data = {9.9,11,14.7,18.1,22.6,27.2,31.1,36.5,39.4};
+
+    Full_bit bit1("SWG_4B_100", 0.9, 
+                    WOB_data, ROP_data, 
+                    3.75, 100, 21500, 12, 20, 0.5, 4);
+
+
+
+    WOB_data = {2150,2300,2560,2810,3060,3290,3540,3820,4070};
+    ROP_data = {10.2,11.9,15.1,19.6,25.6,31.4,37.7,44.3,50.8};
 
     Full_bit bit2("SWG_4B_150", 1, 
-                    WOB_data, 
-                    ROP_data, 
-                    8.5, 150, 25000, 
-                    28, 20, 0.5, 7);
+                    WOB_data, ROP_data, 
+                    3.75, 150, 21500, 12, 20, 0.5, 4);
 
-    // Full_bit bit1("SWG_4B_100", 25, 25000,20, 8.5, 150, 18000, 25, 20, 0.51, 7);
-
-    // Full_bit bit2("SWG_4B_150", 15, 30000,15, 12.25, 1000, 34000, 20, 18, 0.71, 4);
-    // Full_bit bit3("SWG_4B_200", 25, 25000,20, 8.5, 150, 18000, 25, 20, 0.51, 7);
-    // Full_bit bit4("BSS_4B_100", 15, 30000,15, 12.25, 1000, 34000, 20, 18, 0.71, 4);
 
     bit1.print_inserted_attributes_details();
     print_line_space_with_lenght(25);
-    bit1.print_calculated_attributes_details();
+    bit2.print_inserted_attributes_details();
     print_line_space_with_lenght(25);
 
-
-    // bit2.print_inserted_attributes_details();
+    // bit1.print_calculated_attributes_details();
     // print_line_space_with_lenght(25);
+    // bit2.print_calculated_attributes_details();
+    // print_line_space_with_lenght(25);
+
+
 
 
 
