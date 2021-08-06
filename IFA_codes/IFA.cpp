@@ -130,12 +130,12 @@ public:
         print_my_vector(Data_WOB);
         cout<<"ROP data values"<<endl;
         print_my_vector(Data_ROP);
-        printf("Db =  %.2f", Db); cout<<endl;
+        printf("Db =  %.2f inch", Db); cout<<endl;
         printf("RPM =  %.2f", RPM); cout<<endl;
-        printf("UCS =  %.2f", UCS); cout<<endl;
+        printf("UCS =  %.2f psi", UCS); cout<<endl;
         printf("NOC =  %i", NOC); cout<<endl;
         printf("BR =  %i", BR); cout<<endl;
-        printf("UCS =  %.2f", UCS); cout<<endl;
+        printf("UCSN =  %.2f", UCSN); cout<<endl;
         printf("NOB =  %i", NOB); cout<<endl;
     }
 
@@ -206,6 +206,32 @@ int main()
 
 
 
+    WOB_data = {900,1180,1230,1360,1510,1650,1730,1780};
+    ROP_data = {24.8,48.9,53.4,54,62,70.8,81.3,84.1};
+    Full_bit case4_FullBit ("BSS_4B_100", 0.9, 
+                            WOB_data, ROP_data, 
+                            3.75, 100, 7100, 12, 20, 0.5, 4);
+
+    WOB_data = {970,1090,1110,1300,1520,1720,1770,1960};
+    ROP_data = {40.8,61.9,64.5,71.7,91.5,102.9,106.9,127.7};
+    Full_bit case5_FullBit ("BSS_4B_150", 0.9, 
+                            WOB_data, ROP_data, 
+                            3.75, 150, 7100, 12, 20, 0.5, 4);
+
+    WOB_data = {850,960,1150,1210,1270,1340,1570,1800};
+    ROP_data = {30.5,59.5,84.8,87.8,96.5,96.6,120.9,136};
+    Full_bit case6_FullBit ("BSS_4B_200", 0.9, 
+                            WOB_data, ROP_data, 
+                            3.75, 200, 7100, 12, 20, 0.5, 4);
+
+
+
+
+
+
+
+
+
 
 
 
@@ -220,9 +246,12 @@ int main()
     print_line_space_with_lenght(25);
     case3_FullBit.print_inserted_attributes_details();
     print_line_space_with_lenght(25);
-
-
-
+    case4_FullBit.print_inserted_attributes_details();
+    print_line_space_with_lenght(25);
+    case5_FullBit.print_inserted_attributes_details();
+    print_line_space_with_lenght(25);
+    case6_FullBit.print_inserted_attributes_details();
+    print_line_space_with_lenght(25);
 
 
 
