@@ -49,6 +49,7 @@ public:
     int NOB;
             
     // more attributes are calculated at the following
+    
     // float Ac = math.pi*Dc**2 / 4 // cutter face area sq-inch
     // float AB_max = Ac*sin(radians(BR))
     // float Re = Db/(2*(2**0.5)) // calculate the equivalent radius
