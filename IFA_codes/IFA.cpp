@@ -189,14 +189,11 @@ int main()
                             WOB_data, ROP_data, 
                             3.75, 100, 21500, 12, 20, 0.5, 4);
 
-
-
     WOB_data = {2150,2300,2560,2810,3060,3290,3540,3820,4070};
     ROP_data = {10.2,11.9,15.1,19.6,25.6,31.4,37.7,44.3,50.8};
     Full_bit case2_FullBit ("SWG_4B_150", 1, 
                             WOB_data, ROP_data, 
                             3.75, 150, 21500, 12, 20, 0.5, 4);
-
 
     WOB_data = {2280,2380,2570,2810,3070,3310,3540,3820,4080};
     ROP_data = {11.4,12.5,14.9,18.2,22.9,27.7,34.8,43,50};
@@ -227,47 +224,31 @@ int main()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     case1_FullBit.print_inserted_attributes_details();
     print_line_space_with_lenght(25);
-    case2_FullBit.print_inserted_attributes_details();
-    print_line_space_with_lenght(25);
-    case3_FullBit.print_inserted_attributes_details();
-    print_line_space_with_lenght(25);
-    case4_FullBit.print_inserted_attributes_details();
-    print_line_space_with_lenght(25);
-    case5_FullBit.print_inserted_attributes_details();
-    print_line_space_with_lenght(25);
-    case6_FullBit.print_inserted_attributes_details();
-    print_line_space_with_lenght(25);
-
-
-
-
-
-
-
-
-
-    // bit1.print_calculated_attributes_details();
+    // case2_FullBit.print_inserted_attributes_details();
     // print_line_space_with_lenght(25);
-    // bit2.print_calculated_attributes_details();
+    // case3_FullBit.print_inserted_attributes_details();
+    // print_line_space_with_lenght(25);
+    // case4_FullBit.print_inserted_attributes_details();
+    // print_line_space_with_lenght(25);
+    // case5_FullBit.print_inserted_attributes_details();
+    // print_line_space_with_lenght(25);
+    // case6_FullBit.print_inserted_attributes_details();
     // print_line_space_with_lenght(25);
 
-
-
+    case1_FullBit.print_calculated_attributes_details();
+    print_line_space_with_lenght(25);
+    // case2_FullBit.print_calculated_attributes_details();
+    // print_line_space_with_lenght(25);
+    // case3_FullBit.print_calculated_attributes_details();
+    // print_line_space_with_lenght(25);
+    // case4_FullBit.print_calculated_attributes_details();
+    // print_line_space_with_lenght(25);
+    // case5_FullBit.print_calculated_attributes_details();
+    // print_line_space_with_lenght(25);
+    // case6_FullBit.print_calculated_attributes_details();
+    // print_line_space_with_lenght(25);
 
 
 }
