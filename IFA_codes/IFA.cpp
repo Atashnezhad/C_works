@@ -188,17 +188,41 @@ public:
 
 
 
-    float A_Front(float A_B, int IF_A, int B_R){
+    float A_Front(float AB_tocalc_A_Front, int IFA_tocalc_A_Front, int BR_tocalc_A_Front){
         // ABB = A_B;
         // IFA = IF_A;
         // A function that takes the cutter beneath area,
         // back rake and IFA and returns the cutter front area.
-        float A_Front_value = (A_B/tan((((B_R+IF_A) * PI ) / 180 )));
+        float A_Front_value = (AB_tocalc_A_Front/tan((((BR_tocalc_A_Front+IFA_tocalc_A_Front) * PI ) / 180 )));
 
         printf("value of A_Front = %.2f", A_Front_value); cout<<endl;
         return A_Front_value;
     }
        
+    float ROP_model(int NOC_tocalc_ROP_model, float Re_tocalc_ROP_model, 
+                    float AF_tocalc_ROP_model, 
+                    float RPM_tocalc_ROP_model, 
+                    float A_bit_tocalc_ROP_model){
+        // A ROP model (function). A function that takes number of cutters (NOC),
+        // bit equivalent radius (Re), cutter front area (AF), cutter back rake (BR),
+        // interfacial friction angle (IFA), revolutions per minute (RPM), 
+        // and bit area (A_bit).'''
+        
+        float ROP_model_value = ((2*NOC_tocalc_ROP_model*PI*Re_tocalc_ROP_model*\
+                                AF_tocalc_ROP_model*RPM_tocalc_ROP_model)\
+                                /(A_bit_tocalc_ROP_model))*5;
+
+        printf("value of ROP_model_value = %.2f", 
+        ROP_model_value); cout<<endl;
+        return ROP_model_value;
+    }
+
+
+
+
+
+
+
 
 
     // float Find_IFA(float A_B, float max_value){
@@ -304,6 +328,7 @@ int main()
     cout<<"data was fed"<<endl;
 
     case1_FullBit.A_Front(0.5, 20, 12);
+    case1_FullBit.ROP_model(30, 1.5, 0.05, 100, 7);
     
 
 
@@ -319,8 +344,8 @@ int main()
 
 
 
-    case1_FullBit.print_inserted_attributes_details();
-    print_line_space_with_lenght(25);
+    // case1_FullBit.print_inserted_attributes_details();
+    // print_line_space_with_lenght(25);
     // case2_FullBit.print_inserted_attributes_details();
     // print_line_space_with_lenght(25);
     // case3_FullBit.print_inserted_attributes_details();
