@@ -188,7 +188,9 @@ public:
 
 
 
-    float A_Front(float AB_tocalc_A_Front, int IFA_tocalc_A_Front, int BR_tocalc_A_Front){
+    float A_Front(float AB_tocalc_A_Front, 
+                    int IFA_tocalc_A_Front, 
+                    int BR_tocalc_A_Front){
         // ABB = A_B;
         // IFA = IF_A;
         // A function that takes the cutter beneath area,
@@ -219,13 +221,41 @@ public:
 
 
 
+    float Model_IFA(DOC_tocalc_Model_IFA){
+        // A model for IFA calculation. it takes DOC,
+        // normalized cutter velocity, normalized rock 
+        // UCS and cutter back rake and returns the IFA.
+        // comperhensive IFA model utilizing both fullbit 
+        // and single cutter data for soft and hard rocks
+
+                
+        // GH-IFA (II)
+        DOCn = DOC / Dc // normalize DOC
+        a = 18.90 + (-142.78)/((VN)**0.65 + 2.83)
+        b = 75.56 + (150)/((VN)**2 + 100)
+        c = 0.454
+        d = 0.323 + (53.61)/((UCSN**2.5) + 84.86)
+
+        float Model_IFA_value = (a + b / ((DOCn**c) + d))-BR;
+ 
+        return Model_IFA_value
+
+
+
+    }
 
 
 
 
 
 
-    // float Find_IFA(float A_B, float max_value){
+
+
+
+
+
+
+    // float Find_IFA(float AB_tocalc_Find_IFA, float maxvalue_tocalc_Find_IFA){
 
     //     AB = A_B;
     //     maxvalue = max_value;
