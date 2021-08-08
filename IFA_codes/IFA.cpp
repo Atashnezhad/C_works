@@ -1,10 +1,16 @@
+
+/* 
+Author: Amin Atashnezhad
+Interfacial friction angle calculations
+*/
+
 #include <iostream>
 #include<vector>
 #include <cmath>
 #include <math.h>       /* pow */ /* sin */
 #include<string>
 // #include<bits/stdc++.h>
-using namespace std;
+// using namespace std;
 
 
 
@@ -31,22 +37,22 @@ using namespace std;
 
 // #include "print_line_space_with_lenght.h"
 void print_line_space_with_lenght(int j = 10){
-    cout<<endl;
+    std::cout<<std::endl;
     for (int i=0;i<j;i++){ printf("=");}
-    cout<<endl;
+    std::cout<<std::endl;
 }
 
 
-void print_my_vector(vector<float> vec){
+void print_my_vector(std::vector<float> vec){
 
         // for (auto val : vec){
-        //     cout<<val<<" ";}
+        //     std::cout<<val<<" ";}
         for (int i=0; i < vec.size();i++){
 
-            cout<<vec[i]<<" ";}
+            std::cout<<vec[i]<<" ";}
 
 
-        cout<<endl;
+        std::cout<<std::endl;
 }
 
 class Full_bit{
@@ -55,8 +61,8 @@ class Full_bit{
     // self.__class__.instances.append(self)
 public:
 
-    string name;
-    vector <float> Data_WOB, Data_ROP;
+    std::string name;
+    std::vector <float> Data_WOB, Data_ROP;
     float ROP_constant, Db, RPM, UCS, Dc;
     int NOC, BR, NOB;
 
@@ -66,9 +72,9 @@ public:
     float AB_max;
     float Re;// calculate the equivalent radius
     int Number_of_DataPoints;
-    vector <float>  WOC; // weight on cutter
+    std::vector <float>  WOC; // weight on cutter
     float A_bit; // bit area
-    vector <float>  AB; // calculate the cutter beanth area
+    std::vector <float>  AB; // calculate the cutter beanth area
     // float ABB;
     float UCSN; // calculate the normalized UCS
     float V_Cutter_Equivalent; // calculate equivalent velocity
@@ -80,8 +86,8 @@ public:
 
 
     //constructor
-    Full_bit(string inst_name, float inst_ROP_constant, vector <float> inst_Data_WOB, 
-            vector <float>  inst_Data_ROP, float inst_Db, float inst_RPM, float inst_UCS, 
+    Full_bit(std::string inst_name, float inst_ROP_constant, std::vector <float> inst_Data_WOB, 
+            std::vector <float>  inst_Data_ROP, float inst_Db, float inst_RPM, float inst_UCS, 
             int inst_NOC, int inst_BR, float  inst_Dc, int inst_NOB){
 
         name = inst_name;
@@ -101,7 +107,7 @@ public:
         Dc = inst_Dc;
         NOB = inst_NOB;
 
-        printf("The object created with name %s", name.c_str()); cout<<endl;
+        printf("The object created with name %s", name.c_str()); std::cout<<std::endl;
         // print_line_space_with_lenght(40);
 
         // more attributes are calculated at the following
@@ -153,47 +159,47 @@ public:
 
     void print_inserted_attributes_details(){
 
-        cout<<"Here is the inserted attributes for"<<endl;
-        printf("object name = %s", name.c_str()); cout<<endl;
+        std::cout<<"Here is the inserted attributes for"<<std::endl;
+        printf("object name = %s", name.c_str()); std::cout<<std::endl;
 
-        printf("ROP_constant = %.2f", ROP_constant); cout<<endl;
+        printf("ROP_constant = %.2f", ROP_constant); std::cout<<std::endl;
 
-        cout<<"WOB data values"<<endl;
+        std::cout<<"WOB data values"<<std::endl;
         print_my_vector(Data_WOB);
-        cout<<"ROP data values"<<endl;
+        std::cout<<"ROP data values"<<std::endl;
         print_my_vector(Data_ROP);
-        printf("Db =  %.2f inch", Db); cout<<endl;
-        printf("RPM =  %.2f", RPM); cout<<endl;
-        printf("UCS =  %.2f psi", UCS); cout<<endl;
-        printf("NOC =  %i", NOC); cout<<endl;
-        printf("BR =  %i", BR); cout<<endl;
-        printf("UCSN =  %.2f", UCSN); cout<<endl;
-        printf("NOB =  %i", NOB); cout<<endl;
+        printf("Db =  %.2f inch", Db); std::cout<<std::endl;
+        printf("RPM =  %.2f", RPM); std::cout<<std::endl;
+        printf("UCS =  %.2f psi", UCS); std::cout<<std::endl;
+        printf("NOC =  %i", NOC); std::cout<<std::endl;
+        printf("BR =  %i", BR); std::cout<<std::endl;
+        printf("UCSN =  %.2f", UCSN); std::cout<<std::endl;
+        printf("NOB =  %i", NOB); std::cout<<std::endl;
     }
 
     void print_calculated_attributes_details(){
 
-        cout<<"here are calculated attributes for"<<endl;
-        printf("object name = %s", name.c_str()); cout<<endl;
+        std::cout<<"here are calculated attributes for"<<std::endl;
+        printf("object name = %s", name.c_str()); std::cout<<std::endl;
 
-        printf("cutter face area sq-inch = %f", Ac); cout<<endl;
-        printf("cutter AB_max sq-inch = %f", AB_max); cout<<endl;
-        printf("calculated the equivalent radius (Re) inch = %f", Re); cout<<endl;
-        printf("Number of data points = %i", Number_of_DataPoints); cout<<endl;
+        printf("cutter face area sq-inch = %f", Ac); std::cout<<std::endl;
+        printf("cutter AB_max sq-inch = %f", AB_max); std::cout<<std::endl;
+        printf("calculated the equivalent radius (Re) inch = %f", Re); std::cout<<std::endl;
+        printf("Number of data points = %i", Number_of_DataPoints); std::cout<<std::endl;
 
-        cout<<"WOC data values"<<endl;
+        std::cout<<"WOC data values"<<std::endl;
         print_my_vector(WOC);
 
-        printf("A_bit = %.2f inch2", A_bit); cout<<endl;
+        printf("A_bit = %.2f inch2", A_bit); std::cout<<std::endl;
 
-        cout<<"calculated the cutter beanth area data values"<<endl;
+        std::cout<<"calculated the cutter beanth area data values"<<std::endl;
         print_my_vector(AB);
 
-        cout<<"filtered calculated the cutter beanth area data values"<<endl;
+        std::cout<<"filtered calculated the cutter beanth area data values"<<std::endl;
         print_my_vector(AB);
-        printf("UCSN = %.2f", UCSN); cout<<endl;
-        printf("V_Cutter_Equivalent = %.2f inch/sec", V_Cutter_Equivalent); cout<<endl;
-        printf("Normalized V_Cutter_Equivalent = %.2f", VN); cout<<endl;
+        printf("UCSN = %.2f", UCSN); std::cout<<std::endl;
+        printf("V_Cutter_Equivalent = %.2f inch/sec", V_Cutter_Equivalent); std::cout<<std::endl;
+        printf("Normalized V_Cutter_Equivalent = %.2f", VN); std::cout<<std::endl;
 
 
     }
@@ -208,7 +214,7 @@ public:
         // back rake and IFA and returns the cutter front area.
         float A_Front_value = (AB_tocalc_A_Front/tan((((BR_tocalc_A_Front+IFA_tocalc_A_Front) * PI ) / 180 )));
 
-        printf("value of A_Front = %.2f", A_Front_value); cout<<endl;
+        printf("value of A_Front = %.2f", A_Front_value); std::cout<<std::endl;
         return A_Front_value;
     }
        
@@ -227,7 +233,7 @@ public:
                                 /(A_bit_tocalc_ROP_model))*5;
 
         printf("value of ROP_model_value = %.2f", 
-        ROP_model_value); cout<<endl;
+        ROP_model_value); std::cout<<std::endl;
         return ROP_model_value;
     }
 
@@ -326,8 +332,8 @@ int main()
             "the main function was developed in the python language.\n");
     print_line_space_with_lenght(75);
 
-    vector<float> WOB_data;
-    vector<float> ROP_data;
+    std::vector<float> WOB_data;
+    std::vector<float> ROP_data;
 
     WOB_data = {2300,2420,2660,2910,3180,3410,3660,3940,4170};
     ROP_data = {9.9,11,14.7,18.1,22.6,27.2,31.1,36.5,39.4};
@@ -367,7 +373,7 @@ int main()
                             WOB_data, ROP_data, 
                             3.75, 200, 7100, 12, 20, 0.5, 4);
 
-    cout<<"data was fed"<<endl;
+    std::cout<<"data was fed"<<std::endl;
 
     case1_FullBit.A_Front(0.5, 20, 12);
     case1_FullBit.ROP_model(30, 1.5, 0.05, 100, 7);
