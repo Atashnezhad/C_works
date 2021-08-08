@@ -303,7 +303,7 @@ int main()
 
     cout<<"data was fed"<<endl;
 
-    case1_FullBit.A_Front(0.5, 20, 15);
+    case1_FullBit.A_Front(0.5, 20, 12);
     
 
 
