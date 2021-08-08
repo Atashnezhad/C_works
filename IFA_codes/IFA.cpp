@@ -6,8 +6,22 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+
+
 // define some constants
 #define PI 3.14159265
+#define diff1 10000000000000 // initite it with a big value
+#define Number_of_random_attempts 10000;
+#define IFA_search 0
+
+
+
+
+
+
+
+
+
 
 
 // to compile this file simply copy and paste following in the cmd
@@ -47,9 +61,15 @@ public:
     vector <float>  WOC; // weight on cutter
     float A_bit; // bit area
     vector <float>  AB; // calculate the cutter beanth area
+    // float ABB;
     float UCSN; // calculate the normalized UCS
     float V_Cutter_Equivalent; // calculate equivalent velocity
     float VN; // normalize the equivalent velocity
+
+
+    // int IFA;
+
+
 
     //constructor
     Full_bit(string inst_name, float inst_ROP_constant, vector <float> inst_Data_WOB, 
@@ -166,7 +186,70 @@ public:
 
     }
 
+
+
+    float A_Front(float A_B, int IF_A, int B_R){
+        // ABB = A_B;
+        // IFA = IF_A;
+        // A function that takes the cutter beneath area,
+        // back rake and IFA and returns the cutter front area.
+        float A_Front_value = (A_B/tan((((B_R+IF_A) * PI ) / 180 )));
+
+        printf("value of A_Front = %.2f", A_Front_value); cout<<endl;
+        return A_Front_value;
+    }
+       
+
+
+    // float Find_IFA(float A_B, float max_value){
+
+    //     AB = A_B;
+    //     maxvalue = max_value;
+
+    //     // diff1 = 10000000000000; // initite it with a big value
+    //     // Number_of_random_attempts = 10000;
+    //     // IFA_search = 0;
+
+    //     // while diff1 > 0.0001 and IFA_search < maxvalue:
+    //     do{
+
+    //         IFA_search = IFA_search + 0.1;
+    //         AF = self.A_Front(AB,IFA_search) #calculate the cutter front area
+    //         ROP = self.ROP_model(AF) # calculate the ROP
+    //         DOC = ROP/(self.RPM*5) # calculate the depth of cut
+    //         IFA = self.Model_IFA(DOC)
+
+    //         diff2 = abs(IFA_search - IFA)
+            
+    //         if diff2 < diff1:
+    //             diff1 = diff2
+    //             self.Best_IFA = IFA_search
+
+    //     } while (diff1 > 0.0001 && IFA_search < maxvalue);
+
+            
+
+    //     return self.Best_IFA, diff1
+    //     // return 0
+
+    // }
+
+
+
 };
+
+
+
+
+
+
+void feed_data(){
+
+
+}
+
+
+
 
 
 int main()
@@ -177,11 +260,8 @@ int main()
             "the main function was developed in the python language.\n");
     print_line_space_with_lenght(75);
 
-
-
-    vector<float> WOB_data;
+        vector<float> WOB_data;
     vector<float> ROP_data;
-
 
     WOB_data = {2300,2420,2660,2910,3180,3410,3660,3940,4170};
     ROP_data = {9.9,11,14.7,18.1,22.6,27.2,31.1,36.5,39.4};
@@ -221,6 +301,21 @@ int main()
                             WOB_data, ROP_data, 
                             3.75, 200, 7100, 12, 20, 0.5, 4);
 
+    cout<<"data was fed"<<endl;
+
+    case1_FullBit.A_Front(0.5, 20, 15);
+    
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -237,8 +332,8 @@ int main()
     // case6_FullBit.print_inserted_attributes_details();
     // print_line_space_with_lenght(25);
 
-    case1_FullBit.print_calculated_attributes_details();
-    print_line_space_with_lenght(25);
+    // case1_FullBit.print_calculated_attributes_details();
+    // print_line_space_with_lenght(25);
     // case2_FullBit.print_calculated_attributes_details();
     // print_line_space_with_lenght(25);
     // case3_FullBit.print_calculated_attributes_details();
