@@ -3,14 +3,14 @@
 #include <cmath>
 #include <math.h>       /* pow */ /* sin */
 #include<string>
-#include<bits/stdc++.h>
+// #include<bits/stdc++.h>
 using namespace std;
 
 
 
 // define some constants
 #define PI 3.14159265
-#define diff1 10000000000000 // initite it with a big value
+#define diff1 10000000000000 // initiate it with a long value
 #define Number_of_random_attempts 10000;
 #define IFA_search 0
 
@@ -26,6 +26,10 @@ using namespace std;
 
 // to compile this file simply copy and paste following in the cmd
 // clear; g++ IFA.cpp -o IFA; ./IFA
+// clear; g++ -std=c++11 IFA.cpp -o IFA; ./IFA
+
+
+
 // run the followinig in cmd to update git repo
 // git add .; git commit -m "message"; git push; git status
 
@@ -36,8 +40,13 @@ void print_line_space_with_lenght(int j = 10){
 }
 void print_my_vector(vector<float> vec){
 
-        for (auto val : vec){
-            cout<<val<<" ";}
+        // for (auto val : vec){
+        //     cout<<val<<" ";}
+        for (int i=0; i < vec.size();i++){
+
+            cout<<vec[i]<<" ";}
+
+
         cout<<endl;
 }
 
@@ -104,9 +113,13 @@ public:
         Number_of_DataPoints = Data_WOB.size();
 
         //calculate the weight on cutter
-        for (auto wob : Data_WOB)
+        // for (auto wob : Data_WOB)
+        // {
+        //     WOC.push_back(wob/NOC);
+        // }   
+        for (int i=0; i< Data_WOB.size(); i++)
         {
-            WOC.push_back(wob/NOC);
+            WOC.push_back(Data_WOB[i]/NOC);
         }          
 
         A_bit = (PI*pow(Db, 2))/4; // bit area
@@ -116,9 +129,9 @@ public:
         // filter those values that are greater 
         // than availabe cutter beanth area (AB_max)
         float par;
-        for (auto woc : WOC)
+        for (int i=0; i<WOC.size(); i++)
         {
-            par = woc/UCS;
+            par = WOC[i]/UCS;
             if (par<AB_max){
                 AB.push_back(par);
             }else{
@@ -187,7 +200,6 @@ public:
     }
 
 
-
     float A_Front(float AB_tocalc_A_Front, 
                     int IFA_tocalc_A_Front, 
                     int BR_tocalc_A_Front){
@@ -201,7 +213,8 @@ public:
         return A_Front_value;
     }
        
-    float ROP_model(int NOC_tocalc_ROP_model, float Re_tocalc_ROP_model, 
+    float ROP_model(int NOC_tocalc_ROP_model, 
+                    float Re_tocalc_ROP_model, 
                     float AF_tocalc_ROP_model, 
                     float RPM_tocalc_ROP_model, 
                     float A_bit_tocalc_ROP_model){
@@ -221,28 +234,28 @@ public:
 
 
 
-    float Model_IFA(DOC_tocalc_Model_IFA){
-        // A model for IFA calculation. it takes DOC,
-        // normalized cutter velocity, normalized rock 
-        // UCS and cutter back rake and returns the IFA.
-        // comperhensive IFA model utilizing both fullbit 
-        // and single cutter data for soft and hard rocks
+    // float Model_IFA(float DOC_tocalc_Model_IFA){
+    //     // A model for IFA calculation. it takes DOC,
+    //     // normalized cutter velocity, normalized rock 
+    //     // UCS and cutter back rake and returns the IFA.
+    //     // comperhensive IFA model utilizing both fullbit 
+    //     // and single cutter data for soft and hard rocks
 
                 
-        // GH-IFA (II)
-        DOCn = DOC / Dc // normalize DOC
-        a = 18.90 + (-142.78)/((VN)**0.65 + 2.83)
-        b = 75.56 + (150)/((VN)**2 + 100)
-        c = 0.454
-        d = 0.323 + (53.61)/((UCSN**2.5) + 84.86)
+    //     // GH-IFA (II)
+    //     DOCn = DOC / Dc // normalize DOC
+    //     a = 18.90 + (-142.78)/((VN)**0.65 + 2.83)
+    //     b = 75.56 + (150)/((VN)**2 + 100)
+    //     c = 0.454
+    //     d = 0.323 + (53.61)/((UCSN**2.5) + 84.86)
 
-        float Model_IFA_value = (a + b / ((DOCn**c) + d))-BR;
+    //     float Model_IFA_value = (a + b / ((DOCn**c) + d))-BR;
  
-        return Model_IFA_value
+    //     return Model_IFA_value
 
 
 
-    }
+    // }
 
 
 
@@ -314,7 +327,7 @@ int main()
             "the main function was developed in the python language.\n");
     print_line_space_with_lenght(75);
 
-        vector<float> WOB_data;
+    vector<float> WOB_data;
     vector<float> ROP_data;
 
     WOB_data = {2300,2420,2660,2910,3180,3410,3660,3940,4170};
