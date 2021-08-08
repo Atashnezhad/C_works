@@ -18,12 +18,6 @@ using namespace std;
 
 
 
-
-
-
-
-
-
 // to compile this file simply copy and paste following in the cmd
 // clear; g++ IFA.cpp -o IFA; ./IFA
 // clear; g++ -std=c++11 IFA.cpp -o IFA; ./IFA
@@ -33,11 +27,16 @@ using namespace std;
 // run the followinig in cmd to update git repo
 // git add .; git commit -m "message"; git push; git status
 
+
+
+// #include "print_line_space_with_lenght.h"
 void print_line_space_with_lenght(int j = 10){
     cout<<endl;
     for (int i=0;i<j;i++){ printf("=");}
     cout<<endl;
 }
+
+
 void print_my_vector(vector<float> vec){
 
         // for (auto val : vec){
