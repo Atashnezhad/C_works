@@ -31,7 +31,7 @@ Interfacial friction angle calculations
 
 
 // run the followinig in cmd to update git repo
-// git add .; git commit -m "message"; git push; git status; clear
+// git add .; git commit -m "defultmessage"; git push; git status; clear
 
 
 
