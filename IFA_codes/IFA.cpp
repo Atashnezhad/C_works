@@ -74,7 +74,8 @@ public:
     int Number_of_DataPoints;
     std::vector <float>  WOC; // weight on cutter
     float A_bit; // bit area
-    std::vector <float>  AB; // calculate the cutter beanth area
+    std::vector <float>  AB_vec; // calculate the cutter beanth area vector
+    std::vector <float>  AB_vec_filt; // filtered calculate the cutter beanth area vector
     // float ABB;
     float UCSN; // calculate the normalized UCS
     float V_Cutter_Equivalent; // calculate equivalent velocity
@@ -136,11 +137,12 @@ public:
         float par;
         for (int i=0; i<WOC.size(); i++)
         {
-            par = WOC[i]/UCS;
+            par = WOC[i]/UCS; 
+            AB_vec.push_back(par);
             if (par<AB_max){
-                AB.push_back(par);
+                AB_vec_filt.push_back(par);
             }else{
-                AB.push_back(AB_max);
+                AB_vec_filt.push_back(AB_max);
             }
             
         }   
@@ -193,10 +195,10 @@ public:
         printf("A_bit = %.2f inch2", A_bit); std::cout<<std::endl;
 
         std::cout<<"calculated the cutter beanth area data values"<<std::endl;
-        print_my_vector(AB);
+        print_my_vector(AB_vec);
 
         std::cout<<"filtered calculated the cutter beanth area data values"<<std::endl;
-        print_my_vector(AB);
+        print_my_vector(AB_vec_filt);
         printf("UCSN = %.2f", UCSN); std::cout<<std::endl;
         printf("V_Cutter_Equivalent = %.2f inch/sec", V_Cutter_Equivalent); std::cout<<std::endl;
         printf("Normalized V_Cutter_Equivalent = %.2f", VN); std::cout<<std::endl;
@@ -205,36 +207,31 @@ public:
     }
 
 
-    float A_Front(float AB_tocalc_A_Front, 
-                    int IFA_tocalc_A_Front, 
-                    int BR_tocalc_A_Front){
-        // ABB = A_B;
-        // IFA = IF_A;
+    float A_Front(float AB, int IFA){
+
         // A function that takes the cutter beneath area,
         // back rake and IFA and returns the cutter front area.
-        float A_Front_value = (AB_tocalc_A_Front/tan((((BR_tocalc_A_Front+IFA_tocalc_A_Front) * PI ) / 180 )));
+        // float A_Front_value = (AB/tan((((BR+IFA) * PI ) / 180 )));
 
-        printf("value of A_Front = %.2f", A_Front_value); std::cout<<std::endl;
-        return A_Front_value;
+        printf("value of A_Front = %.2f", (AB/tan((((BR+IFA) * PI ) / 180 )))); 
+        std::cout<<std::endl;
+        return (AB/tan((((BR+IFA) * PI ) / 180 )));
     }
        
-    float ROP_model(int NOC_tocalc_ROP_model, 
-                    float Re_tocalc_ROP_model, 
-                    float AF_tocalc_ROP_model, 
-                    float RPM_tocalc_ROP_model, 
-                    float A_bit_tocalc_ROP_model){
+    float ROP_model(float AF){
         // A ROP model (function). A function that takes number of cutters (NOC),
         // bit equivalent radius (Re), cutter front area (AF), cutter back rake (BR),
         // interfacial friction angle (IFA), revolutions per minute (RPM), 
         // and bit area (A_bit).'''
         
-        float ROP_model_value = ((2*NOC_tocalc_ROP_model*PI*Re_tocalc_ROP_model*\
-                                AF_tocalc_ROP_model*RPM_tocalc_ROP_model)\
-                                /(A_bit_tocalc_ROP_model))*5;
+        // float ROP_model_value = (((2*NOC*PI*Re*\
+        //                         AF*RPM)\
+        //                         /(A_bit))*5);
 
-        printf("value of ROP_model_value = %.2f", 
-        ROP_model_value); std::cout<<std::endl;
-        return ROP_model_value;
+        printf("value of ROP_model_value = %.2f", (((2*NOC*PI*Re* AF*RPM)\
+                /(A_bit))*5)); std::cout<<std::endl;
+
+        return (((2*NOC*PI*Re*AF*RPM)/(A_bit))*5);
     }
 
 
@@ -364,8 +361,16 @@ int main()
 
     std::cout<<"data was fed"<<std::endl;
 
-    case1_FullBit.A_Front(0.5, 20, 12);
-    case1_FullBit.ROP_model(30, 1.5, 0.05, 100, 7);
+
+
+
+
+    float case1_A_Front_value = case1_FullBit.A_Front(0.5, 20);
+    float case1_ROP_model_value = case1_FullBit.ROP_model(0.05);
+    
+    print_line_space_with_lenght(25);
+    printf("case1 AF %.2f and ROP %.f", case1_A_Front_value, case1_ROP_model_value);
+    print_line_space_with_lenght(25);
     
 
 
@@ -381,8 +386,8 @@ int main()
 
 
 
-    // case1_FullBit.print_inserted_attributes_details();
-    // print_line_space_with_lenght(25);
+    case1_FullBit.print_inserted_attributes_details();
+    print_line_space_with_lenght(25);
     // case2_FullBit.print_inserted_attributes_details();
     // print_line_space_with_lenght(25);
     // case3_FullBit.print_inserted_attributes_details();
@@ -394,8 +399,8 @@ int main()
     // case6_FullBit.print_inserted_attributes_details();
     // print_line_space_with_lenght(25);
 
-    // case1_FullBit.print_calculated_attributes_details();
-    // print_line_space_with_lenght(25);
+    case1_FullBit.print_calculated_attributes_details();
+    print_line_space_with_lenght(25);
     // case2_FullBit.print_calculated_attributes_details();
     // print_line_space_with_lenght(25);
     // case3_FullBit.print_calculated_attributes_details();
