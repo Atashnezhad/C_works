@@ -4,9 +4,12 @@
 #include <vector>
 using namespace std;
   
-class MyClass {
+class MyClass
+{
+public:
     vector<int> vec;
     int ROP;
+    int A, B;
   
 public:
     MyClass(vector<int> v, int rop) 
@@ -14,15 +17,24 @@ public:
        vec = v;
        ROP = rop;
     }
+
+    int func_1(int a, int b)
+    {
+        A=a*b;
+        return A;
+    }
+
+
+    int func_2()
+    {
+        B=A*A;
+        return B;
+    }
+
     void print()
     {
-        /// print the value of vector
-        // for (int i = 0; i < vec.size(); i++)
-        //     cout << vec[i] << " ";
-
-        cout<< vec[0] << "   ";
-
-        cout << ROP << "   ";
+        cout<< "A " << A<< endl;
+        cout<< "B " << B<< endl;    
     }
 };
   
@@ -32,11 +44,15 @@ int main()
     int rop_data = 500;
     // for (int i = 1; i <= 5; i++)
     //     vec.push_back(i);
+    MyClass obj(vec, rop_data); MyClass obj_2(vec, rop_data); 
 
+    obj.func_1(2,8); obj_2.func_1(2,4); 
+    obj.func_2(); obj_2.func_2(); 
 
+    obj.print();obj_2.print();
 
+    printf("obj 1 A and B values are %i, %i", obj.A, obj.B); cout<<endl;
+    printf("obj 2 A and B values are %i, %i", obj_2.A, obj_2.B);
 
-    MyClass obj(vec, rop_data);
-    obj.print();
     return 0;
 }

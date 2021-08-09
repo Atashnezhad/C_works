@@ -9,7 +9,7 @@ Interfacial friction angle calculations
 #include <cmath>
 #include <math.h>       /* pow */ /* sin */
 #include<string>
-// #include<bits/stdc++.h>
+#include<bits/stdc++.h>
 // using namespace std;
 
 
