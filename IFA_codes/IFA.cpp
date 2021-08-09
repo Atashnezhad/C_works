@@ -9,16 +9,16 @@ Interfacial friction angle calculations
 #include <cmath>
 #include <math.h>       /* pow */ /* sin */
 #include<string>
-#include<bits/stdc++.h>
+// #include<bits/stdc++.h>
 // using namespace std;
 
 
 
 // define some constants
 #define PI 3.14159265
-#define diff1 10000000000000 // initiate it with a long value
+// #define diff1 10000000000000 // initiate it with a long value
 #define Number_of_random_attempts 10000;
-#define IFA_search 0
+// #define IFA_search 0
 
 
 
@@ -157,7 +157,7 @@ public:
         VN = V_Cutter_Equivalent/2.1;
 
 
-    }
+    };
 
     void print_inserted_attributes_details(){
 
@@ -206,17 +206,16 @@ public:
 
     }
 
-
     float A_Front(float AB, int IFA){
 
         // A function that takes the cutter beneath area,
         // back rake and IFA and returns the cutter front area.
         // float A_Front_value = (AB/tan((((BR+IFA) * PI ) / 180 )));
 
-        printf("value of A_Front = %.2f", (AB/tan((((BR+IFA) * PI ) / 180 )))); 
-        std::cout<<std::endl;
+        // printf("value of A_Front = %.2f", (AB/tan((((BR+IFA) * PI ) / 180 )))); 
+        // std::cout<<std::endl;
         return (AB/tan((((BR+IFA) * PI ) / 180 )));
-    }
+    };
        
     float ROP_model(float AF){
         // A ROP model (function). A function that takes number of cutters (NOC),
@@ -228,36 +227,62 @@ public:
         //                         AF*RPM)\
         //                         /(A_bit))*5);
 
-        printf("value of ROP_model_value = %.2f", (((2*NOC*PI*Re* AF*RPM)\
-                /(A_bit))*5)); std::cout<<std::endl;
+        // printf("value of ROP_model_value = %.2f", (((2*NOC*PI*Re* AF*RPM)\
+        //         /(A_bit))*5)); std::cout<<std::endl;
 
         return (((2*NOC*PI*Re*AF*RPM)/(A_bit))*5);
+    };
+
+    float Model_IFA(float DOC){
+        // A model for IFA calculation. it takes DOC,
+        // normalized cutter velocity, normalized rock 
+        // UCS and cutter back rake and returns the IFA.
+        // comperhensive IFA model utilizing both fullbit 
+        // and single cutter data for soft and hard rocks
+
+        // GH-IFA (II)
+        float DOCn = DOC / Dc; // normalize DOC
+        float a = 18.90 + (-142.78)/(pow(VN, 0.65) + 2.83);
+        float b = 75.56 + (150)/(pow(VN, 2) + 100);
+        float c = 0.454;
+        float d = 0.323 + (53.61)/(pow(UCSN, 2.5) + 84.86);
+
+        float Model_IFA_value = (a + b / (pow(DOCn, c) + d))-BR;
+ 
+        return Model_IFA_value;
+    };
+
+
+    std::tuple < float, float>  Find_IFA(float AB, float maxvalue){
+
+        float IFA_search = 0;
+        long diff1 = 10000000000000;
+        float Best_IFA;
+
+        do{
+
+            IFA_search = IFA_search + 0.1;
+            float AF = A_Front(AB, IFA_search); // calculate the cutter front area
+            float ROP = ROP_model(AF); // calculate the ROP
+            float DOC = ROP/(RPM*5); // calculate the depth of cut
+            float IFA = Model_IFA(DOC);
+
+            long diff2 = abs(IFA_search - IFA);
+            
+            if (diff2 < diff1){
+                diff1 = diff2;
+                Best_IFA = IFA_search;
+            }
+            // printf("best IFA %.2f ", Best_IFA);
+
+        } while (diff1 > 0.0001 && IFA_search < maxvalue);
+        
+
+        return std::make_tuple(Best_IFA, diff1);
     }
 
 
 
-    // float Model_IFA(float DOC_tocalc_Model_IFA){
-    //     // A model for IFA calculation. it takes DOC,
-    //     // normalized cutter velocity, normalized rock 
-    //     // UCS and cutter back rake and returns the IFA.
-    //     // comperhensive IFA model utilizing both fullbit 
-    //     // and single cutter data for soft and hard rocks
-
-                
-    //     // GH-IFA (II)
-    //     DOCn = DOC / Dc // normalize DOC
-    //     a = 18.90 + (-142.78)/((VN)**0.65 + 2.83)
-    //     b = 75.56 + (150)/((VN)**2 + 100)
-    //     c = 0.454
-    //     d = 0.323 + (53.61)/((UCSN**2.5) + 84.86)
-
-    //     float Model_IFA_value = (a + b / ((DOCn**c) + d))-BR;
- 
-    //     return Model_IFA_value
-
-
-
-    // }
 
 
 
@@ -265,43 +290,6 @@ public:
 
 
 
-
-
-
-
-
-    // float Find_IFA(float AB_tocalc_Find_IFA, float maxvalue_tocalc_Find_IFA){
-
-    //     AB = A_B;
-    //     maxvalue = max_value;
-
-    //     // diff1 = 10000000000000; // initite it with a big value
-    //     // Number_of_random_attempts = 10000;
-    //     // IFA_search = 0;
-
-    //     // while diff1 > 0.0001 and IFA_search < maxvalue:
-    //     do{
-
-    //         IFA_search = IFA_search + 0.1;
-    //         AF = self.A_Front(AB,IFA_search) #calculate the cutter front area
-    //         ROP = self.ROP_model(AF) # calculate the ROP
-    //         DOC = ROP/(self.RPM*5) # calculate the depth of cut
-    //         IFA = self.Model_IFA(DOC)
-
-    //         diff2 = abs(IFA_search - IFA)
-            
-    //         if diff2 < diff1:
-    //             diff1 = diff2
-    //             self.Best_IFA = IFA_search
-
-    //     } while (diff1 > 0.0001 && IFA_search < maxvalue);
-
-            
-
-    //     return self.Best_IFA, diff1
-    //     // return 0
-
-    // }
 
 
 
@@ -365,13 +353,21 @@ int main()
 
 
 
-    float case1_A_Front_value = case1_FullBit.A_Front(0.5, 20);
-    float case1_ROP_model_value = case1_FullBit.ROP_model(0.05);
+    // float case1_A_Front_value = case1_FullBit.A_Front(0.5, 20);
+    // float case1_ROP_model_value = case1_FullBit.ROP_model(0.05);
+    // float IFA = case1_FullBit.Model_IFA(0.5);
+    // printf("case1 IFA %.2f \n", IFA);
+
+    // std::cout<< std::get<0> (case1_FullBit.Find_IFA(0.1, 60))<<std::endl;
+    print_line_space_with_lenght(25);
+    printf("Best_IFA, diff1 found \n%.2f, %.2f", 
+            (std::get<0> (case1_FullBit.Find_IFA(0.05, 60))), 
+            (std::get<1> (case1_FullBit.Find_IFA(0.05, 60))));
+    print_line_space_with_lenght(25);
+    // print_line_space_with_lenght(25);
+    // printf("case1 AF %.2f and ROP %.f", case1_A_Front_value, case1_ROP_model_value);
+    // print_line_space_with_lenght(25);
     
-    print_line_space_with_lenght(25);
-    printf("case1 AF %.2f and ROP %.f", case1_A_Front_value, case1_ROP_model_value);
-    print_line_space_with_lenght(25);
-    
 
 
 
@@ -386,8 +382,9 @@ int main()
 
 
 
-    case1_FullBit.print_inserted_attributes_details();
-    print_line_space_with_lenght(25);
+
+    // case1_FullBit.print_inserted_attributes_details();
+    // print_line_space_with_lenght(25);
     // case2_FullBit.print_inserted_attributes_details();
     // print_line_space_with_lenght(25);
     // case3_FullBit.print_inserted_attributes_details();
@@ -399,8 +396,8 @@ int main()
     // case6_FullBit.print_inserted_attributes_details();
     // print_line_space_with_lenght(25);
 
-    case1_FullBit.print_calculated_attributes_details();
-    print_line_space_with_lenght(25);
+    // case1_FullBit.print_calculated_attributes_details();
+    // print_line_space_with_lenght(25);
     // case2_FullBit.print_calculated_attributes_details();
     // print_line_space_with_lenght(25);
     // case3_FullBit.print_calculated_attributes_details();

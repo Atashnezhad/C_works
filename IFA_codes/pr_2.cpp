@@ -25,9 +25,9 @@ public:
     }
 
 
-    int func_2()
+    int func_2(int a)
     {
-        B=A*A;
+        B=A*a;
         return B;
     }
 
@@ -42,17 +42,18 @@ int main()
 {
     vector<int> vec = {1,2,2,2,2,5,5,5};
     int rop_data = 500;
-    // for (int i = 1; i <= 5; i++)
-    //     vec.push_back(i);
-    MyClass obj(vec, rop_data); MyClass obj_2(vec, rop_data); 
+
+
+    MyClass obj(vec, rop_data); 
+    MyClass obj_2(vec, rop_data); 
 
     obj.func_1(2,8); obj_2.func_1(2,4); 
-    obj.func_2(); obj_2.func_2(); 
+    obj.func_2(3); obj_2.func_2(5); 
 
     obj.print();obj_2.print();
 
     printf("obj 1 A and B values are %i, %i", obj.A, obj.B); cout<<endl;
-    printf("obj 2 A and B values are %i, %i", obj_2.A, obj_2.B);
+    printf("obj 2 A and B values are %i, %i", obj_2.A, obj_2.B); cout<<endl;
 
     return 0;
 }
