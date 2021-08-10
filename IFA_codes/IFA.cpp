@@ -102,6 +102,19 @@ public:
         Dc = inst_Dc;
         NOB = inst_NOB;
 
+
+
+        // ROP_Model_esti_list = ROP_Model_esti_list;
+        // IFAlist = IFAlist;
+        // difflist = IFAlist;
+
+
+
+
+
+
+
+
         printf("The object created with name %s", name.c_str()); std::cout<<std::endl;
         // print_line_space_with_lenght(40);
         // more attributes are calculated at the following
@@ -393,31 +406,46 @@ int main()
 
 
 
-    printf("rop estimated is %.2f", std::get<0> (case1_FullBit.calculate_ROP(0.3, 1)));
+    // printf("rop estimated is %.2f", std::get<0> (case1_FullBit.calculate_ROP(0.3, 1)));
+    // print_line_space_with_lenght(25);
+
+
+    //run the code and print the rop, diff and IFA values
+
+    printf("run the code and print the rop, diff and IFA values for case name %s",
+            case1_FullBit.name.c_str());std::cout<<std::endl;
+
+    case1_FullBit.calculate_fitness();
+
+    std::cout<<"rop list is \n" << std::endl;
+    print_my_vector(case1_FullBit.ROP_Model_esti_list);
+    print_line_space_with_lenght(25);
+
+    std::cout<<"IFA list is \n" << std::endl;
+    print_my_vector(case1_FullBit.IFAlist);
+    print_line_space_with_lenght(25);
+
+    std::cout<<"difflist  is \n" << std::endl;
+    print_my_vector(case1_FullBit.difflist);
     print_line_space_with_lenght(25);
 
 
 
-    std::cout<<case1_FullBit.
 
 
 
+    // std::vector<float> rop_calc_list = std::get<0> (case1_FullBit.calculate_fitness());
+    // std::vector<float> diff_list = std::get<1> (case1_FullBit.calculate_fitness());
+    // std::vector<float> IFA_list = std::get<2> (case1_FullBit.calculate_fitness());
 
-
-
-
-    std::vector<float> rop_calc_list = std::get<0> (case1_FullBit.calculate_fitness());
-    std::vector<float> diff_list = std::get<1> (case1_FullBit.calculate_fitness());
-    std::vector<float> IFA_list = std::get<2> (case1_FullBit.calculate_fitness());
-
-    std::cout<<"rop_calc_list is "<<std::endl; 
-    print_my_vector(rop_calc_list);
-    print_line_space_with_lenght(25);
-    std::cout<<"diff_list is "<<std::endl; 
-    print_my_vector(diff_list);
-    print_line_space_with_lenght(25);
-    std::cout<<"IFA_list is "<<std::endl; 
-    print_my_vector(IFA_list);
+    // std::cout<<"rop_calc_list is "<<std::endl; 
+    // print_my_vector(rop_calc_list);
+    // print_line_space_with_lenght(25);
+    // std::cout<<"diff_list is "<<std::endl; 
+    // print_my_vector(diff_list);
+    // print_line_space_with_lenght(25);
+    // std::cout<<"IFA_list is "<<std::endl; 
+    // print_my_vector(IFA_list);
 
 
 
