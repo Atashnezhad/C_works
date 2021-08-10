@@ -3,8 +3,10 @@
 Author: Amin Atashnezhad
 Interfacial friction angle calculations
 */
-
+// standard funcs
 #include <iostream>
+// made up funcs
+#include "Full_bit.h"
 #include "Full_bit.h"
 
 // to compile this file simply copy and paste following in the cmd
