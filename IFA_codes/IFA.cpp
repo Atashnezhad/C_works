@@ -86,6 +86,13 @@ public:
 
 
 
+
+    // float std::vec<float> ROP_Model_esti_list;
+    // float std::vec<float> IFAlist;
+    // float std::vec<float> difflist;
+
+
+
     //constructor
     Full_bit(std::string inst_name, float inst_ROP_constant, std::vector <float> inst_Data_WOB, 
             std::vector <float>  inst_Data_ROP, float inst_Db, float inst_RPM, float inst_UCS, 
@@ -281,15 +288,9 @@ public:
         return std::make_tuple(Best_IFA, diff1);
     }
 
-    // def Calculate_ROP(self, AB, maxvalue):
-    //     ''' A function that takes the cutter beneath
-    //     area and returns the ROP estimated'''
-    //     IFA, diff = self.Find_IFA(AB, maxvalue)
-    //     AF = self.A_Front(AB,IFA)
-    //     Estimated_ROP = self.ROPcons * self.ROP_model(AF)
-    //     return Estimated_ROP, IFA, diff
 
-    std::tuple < float, float, float>   Calculate_ROP(float AB, float maxvalue){
+
+    std::tuple < float, float, float>   calculate_ROP(float AB, float maxvalue){
         // A function that takes the cutter beneath
         // area and returns the ROP estimated
 
@@ -303,6 +304,30 @@ public:
     }
 
 
+    std::tuple<std::vector<float>, std::vector<float>, std::vector<float>> calculate_fitness(){
+
+        // ROP calculation
+        std::vector<float> ROP_Model_esti_list;
+        std::vector<float> IFAlist;
+        std::vector<float> difflist;
+        float maxvalue = 90 - BR;
+        for (int i = 0;i<Number_of_DataPoints; i++){
+
+            float ROP_Model_esti = (std::get<0> (calculate_ROP(AB_vec_filt[i], maxvalue)));        
+            float IFA = (std::get<1> (calculate_ROP(AB_vec_filt[i], maxvalue))); 
+            float diff = (std::get<2> (calculate_ROP(AB_vec_filt[i], maxvalue))); 
+
+            ROP_Model_esti_list.push_back(ROP_Model_esti);
+            difflist.push_back(diff);     
+            maxvalue = IFA; // make sure descending trend for IFA vs DOC
+            IFAlist.push_back(IFA); 
+
+        }
+
+        return  std::make_tuple(ROP_Model_esti_list, difflist, IFAlist);
+
+    }
+        
 
 
 
@@ -397,8 +422,37 @@ int main()
 
 
 
-    printf("rop estimated is %.2f", std::get<0> (case1_FullBit.Calculate_ROP(0.3, 1)));
+    printf("rop estimated is %.2f", std::get<0> (case1_FullBit.calculate_ROP(0.3, 1)));
     print_line_space_with_lenght(25);
+
+
+    std::vector<float> rop_calc_list = std::get<0> (case1_FullBit.calculate_fitness());
+    std::vector<float> diff_list = std::get<1> (case1_FullBit.calculate_fitness());
+    std::vector<float> IFA_list = std::get<2> (case1_FullBit.calculate_fitness());
+
+
+    std::cout<<"rop_calc_list is "<<std::endl; 
+    print_my_vector(rop_calc_list);
+    print_line_space_with_lenght(25);
+    std::cout<<"diff_list is "<<std::endl; 
+    print_my_vector(diff_list);
+    print_line_space_with_lenght(25);
+    std::cout<<"IFA_list is "<<std::endl; 
+    print_my_vector(IFA_list);
+
+
+
+
+    // std::cout<<"diff estimated list is "<<std::endl;  
+    // std::cout(std::get<1> (case1_FullBit.calculate_fitness()));
+
+    // std::cout<<"IFA estimated list is "<<std::endl;  
+    // std::cout(std::get<2> (case1_FullBit.calculate_fitness()));
+    
+
+
+
+
 
     // print_line_space_with_lenght(25);
     // printf("case1 AF %.2f and ROP %.f", case1_A_Front_value, case1_ROP_model_value);
