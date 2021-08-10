@@ -390,24 +390,6 @@ int main()
 
 
 
-    // float case1_A_Front_value = case1_FullBit.A_Front(0.5, 20);
-    // float case1_ROP_model_value = case1_FullBit.ROP_model(0.05);
-    // float IFA = case1_FullBit.Model_IFA(0.5);
-    // printf("case1 IFA %.2f \n", IFA);
-
-    // std::cout<< std::get<0> (case1_FullBit.Find_IFA(0.1, 60))<<std::endl;
-    // print_line_space_with_lenght(25);
-    // printf("Best_IFA, diff1 found for case name %s, \n%.2f, %.2f",
-    //         case1_FullBit.name.c_str(), 
-    //         (std::get<0> (case1_FullBit.Find_IFA(0.05, 60))), 
-    //         (std::get<1> (case1_FullBit.Find_IFA(0.05, 60))));
-    // print_line_space_with_lenght(25);
-
-
-    // printf("rop estimated is %.2f", std::get<0> (case1_FullBit.calculate_ROP(0.3, 1)));
-    // print_line_space_with_lenght(25);
-
-
     //run the code and print the rop, diff and IFA values
 
     printf("run the code and print the rop, diff and IFA values for case name %s",
@@ -428,54 +410,44 @@ int main()
     print_line_space_with_lenght(25);
 
 
+    printf("run the code and print the rop, diff and IFA values for case name %s",
+            case2_FullBit.name.c_str());std::cout<<std::endl;
+
+    case2_FullBit.calculate_fitness();
+
+    std::cout<<"rop list is \n" << std::endl;
+    print_my_vector(case2_FullBit.ROP_Model_esti_list);
+    print_line_space_with_lenght(25);
+
+    std::cout<<"IFA list is \n" << std::endl;
+    print_my_vector(case2_FullBit.IFAlist);
+    print_line_space_with_lenght(25);
+
+    std::cout<<"difflist  is \n" << std::endl;
+    print_my_vector(case2_FullBit.difflist);
+    print_line_space_with_lenght(25);
 
 
 
-
-    // std::vector<float> rop_calc_list = std::get<0> (case1_FullBit.calculate_fitness());
-    // std::vector<float> diff_list = std::get<1> (case1_FullBit.calculate_fitness());
-    // std::vector<float> IFA_list = std::get<2> (case1_FullBit.calculate_fitness());
-
-    // std::cout<<"rop_calc_list is "<<std::endl; 
-    // print_my_vector(rop_calc_list);
-    // print_line_space_with_lenght(25);
-    // std::cout<<"diff_list is "<<std::endl; 
-    // print_my_vector(diff_list);
-    // print_line_space_with_lenght(25);
-    // std::cout<<"IFA_list is "<<std::endl; 
-    // print_my_vector(IFA_list);
-
-
-
-    // print_line_space_with_lenght(25);
-    // printf("case1 AF %.2f and ROP %.f", case1_A_Front_value, case1_ROP_model_value);
-    // print_line_space_with_lenght(25);
-    
-    // case1_FullBit.print_inserted_attributes_details();
-    // print_line_space_with_lenght(25);
-    // case2_FullBit.print_inserted_attributes_details();
-    // print_line_space_with_lenght(25);
-    // case3_FullBit.print_inserted_attributes_details();
-    // print_line_space_with_lenght(25);
-    // case4_FullBit.print_inserted_attributes_details();
-    // print_line_space_with_lenght(25);
-    // case5_FullBit.print_inserted_attributes_details();
-    // print_line_space_with_lenght(25);
-    // case6_FullBit.print_inserted_attributes_details();
-    // print_line_space_with_lenght(25);
-
-    // case1_FullBit.print_calculated_attributes_details();
-    // print_line_space_with_lenght(25);
-    // case2_FullBit.print_calculated_attributes_details();
-    // print_line_space_with_lenght(25);
-    // case3_FullBit.print_calculated_attributes_details();
-    // print_line_space_with_lenght(25);
-    // case4_FullBit.print_calculated_attributes_details();
-    // print_line_space_with_lenght(25);
-    // case5_FullBit.print_calculated_attributes_details();
-    // print_line_space_with_lenght(25);
-    // case6_FullBit.print_calculated_attributes_details();
-    // print_line_space_with_lenght(25);
 
 
 }
+
+
+
+    // float case1_A_Front_value = case1_FullBit.A_Front(0.5, 20);
+    // float case1_ROP_model_value = case1_FullBit.ROP_model(0.05);
+    // float IFA = case1_FullBit.Model_IFA(0.5);
+    // printf("case1 IFA %.2f \n", IFA);
+
+    // std::cout<< std::get<0> (case1_FullBit.Find_IFA(0.1, 60))<<std::endl;
+    // print_line_space_with_lenght(25);
+    // printf("Best_IFA, diff1 found for case name %s, \n%.2f, %.2f",
+    //         case1_FullBit.name.c_str(), 
+    //         (std::get<0> (case1_FullBit.Find_IFA(0.05, 60))), 
+    //         (std::get<1> (case1_FullBit.Find_IFA(0.05, 60))));
+    // print_line_space_with_lenght(25);
+
+
+    // printf("rop estimated is %.2f", std::get<0> (case1_FullBit.calculate_ROP(0.3, 1)));
+    // print_line_space_with_lenght(25);
