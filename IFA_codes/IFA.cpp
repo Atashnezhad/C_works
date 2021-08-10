@@ -20,20 +20,11 @@ Interfacial friction angle calculations
 #define Number_of_random_attempts 10000;
 // #define IFA_search 0
 
-
-
-
-
 // to compile this file simply copy and paste following in the cmd
 // clear; g++ IFA.cpp -o IFA; ./IFA
 // clear; g++ -std=c++11 IFA.cpp -o IFA; ./IFA
-
-
-
 // run the followinig in cmd to update git repo
 // git add .; git commit -m "default_message"; git push; git status; clear
-
-
 
 // #include "print_line_space_with_lenght.h"
 void print_line_space_with_lenght(int j = 10){
@@ -41,7 +32,6 @@ void print_line_space_with_lenght(int j = 10){
     for (int i=0;i<j;i++){ printf("=");}
     std::cout<<std::endl;
 }
-
 
 void print_my_vector(std::vector<float> vec){
 
@@ -82,14 +72,11 @@ public:
     float VN; // normalize the equivalent velocity
 
 
-    // int IFA;
+    std::vector<float> ROP_Model_esti_list;
+    std::vector<float> IFAlist;
+    std::vector<float> difflist;
 
 
-
-
-    // float std::vec<float> ROP_Model_esti_list;
-    // float std::vec<float> IFAlist;
-    // float std::vec<float> difflist;
 
 
 
@@ -117,7 +104,6 @@ public:
 
         printf("The object created with name %s", name.c_str()); std::cout<<std::endl;
         // print_line_space_with_lenght(40);
-
         // more attributes are calculated at the following
 
         Ac = PI*pow(Dc, 2) / 4; // cutter face area sq-inch
@@ -307,9 +293,9 @@ public:
     std::tuple<std::vector<float>, std::vector<float>, std::vector<float>> calculate_fitness(){
 
         // ROP calculation
-        std::vector<float> ROP_Model_esti_list;
-        std::vector<float> IFAlist;
-        std::vector<float> difflist;
+        // std::vector<float> ROP_Model_esti_list;
+        // std::vector<float> IFAlist;
+        // std::vector<float> difflist;
         float maxvalue = 90 - BR;
         for (int i = 0;i<Number_of_DataPoints; i++){
 
@@ -328,21 +314,6 @@ public:
 
     }
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 };
@@ -426,10 +397,18 @@ int main()
     print_line_space_with_lenght(25);
 
 
+
+    std::cout<<case1_FullBit.
+
+
+
+
+
+
+
     std::vector<float> rop_calc_list = std::get<0> (case1_FullBit.calculate_fitness());
     std::vector<float> diff_list = std::get<1> (case1_FullBit.calculate_fitness());
     std::vector<float> IFA_list = std::get<2> (case1_FullBit.calculate_fitness());
-
 
     std::cout<<"rop_calc_list is "<<std::endl; 
     print_my_vector(rop_calc_list);
@@ -442,37 +421,10 @@ int main()
 
 
 
-
-    // std::cout<<"diff estimated list is "<<std::endl;  
-    // std::cout(std::get<1> (case1_FullBit.calculate_fitness()));
-
-    // std::cout<<"IFA estimated list is "<<std::endl;  
-    // std::cout(std::get<2> (case1_FullBit.calculate_fitness()));
-    
-
-
-
-
-
     // print_line_space_with_lenght(25);
     // printf("case1 AF %.2f and ROP %.f", case1_A_Front_value, case1_ROP_model_value);
     // print_line_space_with_lenght(25);
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // case1_FullBit.print_inserted_attributes_details();
     // print_line_space_with_lenght(25);
     // case2_FullBit.print_inserted_attributes_details();
