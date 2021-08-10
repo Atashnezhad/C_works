@@ -122,7 +122,8 @@
         "xlocmes": "cpp",
         "xlocmon": "cpp",
         "xloctime": "cpp",
-        "xtree": "cpp"
+        "xtree": "cpp",
+        "full_bit.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
