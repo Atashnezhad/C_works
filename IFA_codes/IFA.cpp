@@ -397,13 +397,11 @@ int main()
 
     // std::cout<< std::get<0> (case1_FullBit.Find_IFA(0.1, 60))<<std::endl;
     // print_line_space_with_lenght(25);
-    printf("Best_IFA, diff1 found for case name %s, \n%.2f, %.2f",
-            case1_FullBit.name.c_str(), 
-            (std::get<0> (case1_FullBit.Find_IFA(0.05, 60))), 
-            (std::get<1> (case1_FullBit.Find_IFA(0.05, 60))));
-    print_line_space_with_lenght(25);
-
-
+    // printf("Best_IFA, diff1 found for case name %s, \n%.2f, %.2f",
+    //         case1_FullBit.name.c_str(), 
+    //         (std::get<0> (case1_FullBit.Find_IFA(0.05, 60))), 
+    //         (std::get<1> (case1_FullBit.Find_IFA(0.05, 60))));
+    // print_line_space_with_lenght(25);
 
 
     // printf("rop estimated is %.2f", std::get<0> (case1_FullBit.calculate_ROP(0.3, 1)));
