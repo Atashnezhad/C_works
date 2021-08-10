@@ -9,7 +9,7 @@ Interfacial friction angle calculations
 #include <cmath>
 #include <math.h>       /* pow */ /* sin */
 #include<string>
-#include<bits/stdc++.h>
+// #include<bits/stdc++.h>
 // using namespace std;
 
 
@@ -273,7 +273,7 @@ public:
                 diff1 = diff2;
                 Best_IFA = IFA_search;
             }
-            // printf("best IFA %.2f ", Best_IFA);
+            // printf("best IFA %.2f ", Best_IFA); std::cout<<std::endl;
 
         } while (diff1 > 0.0001 && IFA_search < maxvalue);
         
@@ -348,6 +348,7 @@ int main()
                             3.75, 200, 7100, 12, 20, 0.5, 4);
 
     std::cout<<"data was fed"<<std::endl;
+    print_line_space_with_lenght(75);
 
 
 
@@ -359,8 +360,9 @@ int main()
     // printf("case1 IFA %.2f \n", IFA);
 
     // std::cout<< std::get<0> (case1_FullBit.Find_IFA(0.1, 60))<<std::endl;
-    print_line_space_with_lenght(25);
-    printf("Best_IFA, diff1 found \n%.2f, %.2f", 
+    // print_line_space_with_lenght(25);
+    printf("Best_IFA, diff1 found for case name %s, \n%.2f, %.2f",
+            case1_FullBit.name.c_str(), 
             (std::get<0> (case1_FullBit.Find_IFA(0.05, 60))), 
             (std::get<1> (case1_FullBit.Find_IFA(0.05, 60))));
     print_line_space_with_lenght(25);
