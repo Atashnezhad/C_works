@@ -281,6 +281,33 @@ public:
         return std::make_tuple(Best_IFA, diff1);
     }
 
+    // def Calculate_ROP(self, AB, maxvalue):
+    //     ''' A function that takes the cutter beneath
+    //     area and returns the ROP estimated'''
+    //     IFA, diff = self.Find_IFA(AB, maxvalue)
+    //     AF = self.A_Front(AB,IFA)
+    //     Estimated_ROP = self.ROPcons * self.ROP_model(AF)
+    //     return Estimated_ROP, IFA, diff
+
+    std::tuple < float, float, float>   Calculate_ROP(float AB, float maxvalue){
+        // A function that takes the cutter beneath
+        // area and returns the ROP estimated
+
+        float IFA = (std::get<0> (Find_IFA(AB, maxvalue)));
+        float diff = (std::get<1> (Find_IFA(AB, maxvalue)));
+        float AF = A_Front(AB, IFA);
+        float Estimated_ROP = ROP_constant * ROP_model(AF);
+
+        return  std::make_tuple(Estimated_ROP, IFA, diff);
+
+    }
+
+
+
+
+
+
+
 
 
 
@@ -366,6 +393,13 @@ int main()
             (std::get<0> (case1_FullBit.Find_IFA(0.05, 60))), 
             (std::get<1> (case1_FullBit.Find_IFA(0.05, 60))));
     print_line_space_with_lenght(25);
+
+
+
+
+    printf("rop estimated is %.2f", std::get<0> (case1_FullBit.Calculate_ROP(0.3, 1)));
+    print_line_space_with_lenght(25);
+
     // print_line_space_with_lenght(25);
     // printf("case1 AF %.2f and ROP %.f", case1_A_Front_value, case1_ROP_model_value);
     // print_line_space_with_lenght(25);
