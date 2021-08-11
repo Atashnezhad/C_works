@@ -115,28 +115,45 @@ int main()
         {"diff", diff_calc}};
     
     // Write the vector to CSV
-    write_csv("calculations.csv", output);
+    write_csv("calculations_case_1.csv", output);
 
 
 
-//     printf("run the code and print the rop, diff and IFA values for case name %s",
-//             case2_FullBit.name.c_str());std::cout<<std::endl;
+    printf("run the code and print the rop, diff and IFA values for case name %s",
+            case2_FullBit.name.c_str());std::cout<<std::endl;
 
-//     case2_FullBit.calculate_fitness();
+    case2_FullBit.calculate_fitness();
 
-//     std::cout<<"rop list is \n" << std::endl;
-//     print_my_vector(case2_FullBit.ROP_Model_esti_list);
-//     print_line_space_with_lenght(25);
+    std::cout<<"rop list is \n" << std::endl;
+    print_my_vector(case2_FullBit.ROP_Model_esti_list);
+    print_line_space_with_lenght(25);
 
-//     std::cout<<"IFA list is \n" << std::endl;
-//     print_my_vector(case2_FullBit.IFAlist);
-//     print_line_space_with_lenght(25);
+    std::cout<<"IFA list is \n" << std::endl;
+    print_my_vector(case2_FullBit.IFAlist);
+    print_line_space_with_lenght(25);
 
-//     std::cout<<"difflist  is \n" << std::endl;
-//     print_my_vector(case2_FullBit.difflist);
-//     print_line_space_with_lenght(25);
+    std::cout<<"difflist  is \n" << std::endl;
+    print_my_vector(case2_FullBit.difflist);
+    print_line_space_with_lenght(25);
 
+    // generate a csv file from calculations
+    // Make three vectors of data
+    wob = case2_FullBit.Data_WOB;
+    rop = case2_FullBit.Data_ROP;
+    rop_calc = case2_FullBit.ROP_Model_esti_list;
+    ifa_calc = case2_FullBit.IFAlist;
+    diff_calc = case2_FullBit.difflist;
 
+    
+    // Wrap into a vector
+    output = {{"WOB lbf", wob}, 
+                {"ROP ft/hr", rop}, 
+                {"ROP calc ft/hr", rop_calc},
+                {"IFA degree", ifa_calc}, 
+                {"diff", diff_calc}};
+    
+    // Write the vector to CSV
+    write_csv("calculations_case_2.csv", output);
 
 
 
