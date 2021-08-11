@@ -8,6 +8,7 @@ Interfacial friction angle calculations
 // made up funcs
 #include "Full_bit.h"
 #include "Full_bit.h"
+#include "write_csv.h"
 
 // to compile this file simply copy and paste following in the cmd
 // clear; g++ IFA.cpp -o IFA; ./IFA
@@ -37,6 +38,15 @@ int main()
     Full_bit case2_FullBit ("SWG_4B_150", 1, 
                             WOB_data, ROP_data, 
                             3.75, 150, 21500, 12, 20, 0.5, 4);
+
+
+
+
+
+
+
+
+
 
     // WOB_data = {2280,2380,2570,2810,3070,3310,3540,3820,4080};
     // ROP_data = {11.4,12.5,14.9,18.2,22.9,27.7,34.8,43,50};
@@ -86,22 +96,45 @@ int main()
     print_line_space_with_lenght(25);
 
 
-    printf("run the code and print the rop, diff and IFA values for case name %s",
-            case2_FullBit.name.c_str());std::cout<<std::endl;
 
-    case2_FullBit.calculate_fitness();
 
-    std::cout<<"rop list is \n" << std::endl;
-    print_my_vector(case2_FullBit.ROP_Model_esti_list);
-    print_line_space_with_lenght(25);
+    // generate a csv file from calculations
+    // Make three vectors of data
+    std::vector<float> wob = case1_FullBit.Data_WOB;
+    std::vector<float> rop = case1_FullBit.Data_ROP;
+    std::vector<float> rop_calc = case1_FullBit.ROP_Model_esti_list;
+    std::vector<float> ifa_calc = case1_FullBit.IFAlist;
+    std::vector<float> diff_calc = case1_FullBit.difflist;
 
-    std::cout<<"IFA list is \n" << std::endl;
-    print_my_vector(case2_FullBit.IFAlist);
-    print_line_space_with_lenght(25);
+    
+    // Wrap into a vector
+    std::vector<std::pair<std::string, std::vector<float>>> output = {{"WOB lbf", wob}, 
+        {"ROP ft/hr", rop}, 
+        {"ROP calc ft/hr", rop_calc},
+        {"IFA degree", ifa_calc}, 
+        {"diff", diff_calc}};
+    
+    // Write the vector to CSV
+    write_csv("calculations.csv", output);
 
-    std::cout<<"difflist  is \n" << std::endl;
-    print_my_vector(case2_FullBit.difflist);
-    print_line_space_with_lenght(25);
+
+
+//     printf("run the code and print the rop, diff and IFA values for case name %s",
+//             case2_FullBit.name.c_str());std::cout<<std::endl;
+
+//     case2_FullBit.calculate_fitness();
+
+//     std::cout<<"rop list is \n" << std::endl;
+//     print_my_vector(case2_FullBit.ROP_Model_esti_list);
+//     print_line_space_with_lenght(25);
+
+//     std::cout<<"IFA list is \n" << std::endl;
+//     print_my_vector(case2_FullBit.IFAlist);
+//     print_line_space_with_lenght(25);
+
+//     std::cout<<"difflist  is \n" << std::endl;
+//     print_my_vector(case2_FullBit.difflist);
+//     print_line_space_with_lenght(25);
 
 
 

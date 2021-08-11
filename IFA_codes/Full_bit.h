@@ -9,7 +9,7 @@
 #include <cmath>
 #include <math.h>       /* pow */ /* sin */
 #include<string>
-#include<bits/stdc++.h>
+// #include<bits/stdc++.h>
 
 // define some constants
 #define PI 3.14159265
