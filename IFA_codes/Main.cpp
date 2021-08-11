@@ -43,36 +43,6 @@ int main()
 
 
 
-
-
-
-
-
-    // WOB_data = {2280,2380,2570,2810,3070,3310,3540,3820,4080};
-    // ROP_data = {11.4,12.5,14.9,18.2,22.9,27.7,34.8,43,50};
-    // Full_bit case3_FullBit ("SWG_4B_200", 0.9, 
-    //                         WOB_data, ROP_data, 
-    //                         3.75, 200, 21500, 12, 20, 0.5, 4);
-
-
-    // WOB_data = {900,1180,1230,1360,1510,1650,1730,1780};
-    // ROP_data = {24.8,48.9,53.4,54,62,70.8,81.3,84.1};
-    // Full_bit case4_FullBit ("BSS_4B_100", 0.9, 
-    //                         WOB_data, ROP_data, 
-    //                         3.75, 100, 7100, 12, 20, 0.5, 4);
-
-    // WOB_data = {970,1090,1110,1300,1520,1720,1770,1960};
-    // ROP_data = {40.8,61.9,64.5,71.7,91.5,102.9,106.9,127.7};
-    // Full_bit case5_FullBit ("BSS_4B_150", 0.9, 
-    //                         WOB_data, ROP_data, 
-    //                         3.75, 150, 7100, 12, 20, 0.5, 4);
-
-    // WOB_data = {850,960,1150,1210,1270,1340,1570,1800};
-    // ROP_data = {30.5,59.5,84.8,87.8,96.5,96.6,120.9,136};
-    // Full_bit case6_FullBit ("BSS_4B_200", 0.9, 
-    //                         WOB_data, ROP_data, 
-    //                         3.75, 200, 7100, 12, 20, 0.5, 4);
-
     std::cout<<"data was fed"<<std::endl;
     print_line_space_with_lenght(75);
 
@@ -136,6 +106,9 @@ int main()
     print_my_vector(case2_FullBit.difflist);
     print_line_space_with_lenght(25);
 
+
+
+
     // generate a csv file from calculations
     // Make three vectors of data
     wob = case2_FullBit.Data_WOB;
@@ -159,3 +132,27 @@ int main()
 
 }
 
+    // WOB_data = {2280,2380,2570,2810,3070,3310,3540,3820,4080};
+    // ROP_data = {11.4,12.5,14.9,18.2,22.9,27.7,34.8,43,50};
+    // Full_bit case3_FullBit ("SWG_4B_200", 0.9, 
+    //                         WOB_data, ROP_data, 
+    //                         3.75, 200, 21500, 12, 20, 0.5, 4);
+
+
+    // WOB_data = {900,1180,1230,1360,1510,1650,1730,1780};
+    // ROP_data = {24.8,48.9,53.4,54,62,70.8,81.3,84.1};
+    // Full_bit case4_FullBit ("BSS_4B_100", 0.9, 
+    //                         WOB_data, ROP_data, 
+    //                         3.75, 100, 7100, 12, 20, 0.5, 4);
+
+    // WOB_data = {970,1090,1110,1300,1520,1720,1770,1960};
+    // ROP_data = {40.8,61.9,64.5,71.7,91.5,102.9,106.9,127.7};
+    // Full_bit case5_FullBit ("BSS_4B_150", 0.9, 
+    //                         WOB_data, ROP_data, 
+    //                         3.75, 150, 7100, 12, 20, 0.5, 4);
+
+    // WOB_data = {850,960,1150,1210,1270,1340,1570,1800};
+    // ROP_data = {30.5,59.5,84.8,87.8,96.5,96.6,120.9,136};
+    // Full_bit case6_FullBit ("BSS_4B_200", 0.9, 
+    //                         WOB_data, ROP_data, 
+    //                         3.75, 200, 7100, 12, 20, 0.5, 4);
